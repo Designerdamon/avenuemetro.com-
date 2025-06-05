@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+    <title>Avenue Metro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header">
+            <!-- Header will be loaded dynamically -->
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Try to load dynamic header
+                const response = await fetch('components/header.html');
+                if (response.ok) {
+                    const headerContent = await response.text();
+                    document.getElementById('header').innerHTML = headerContent;
+                    
+                    // Reinitialize dropdowns after loading
+                    const dropdowns = document.querySelectorAll('.dropdown');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.addEventListener('mouseenter', function() {
+                            this.querySelector('.dropdown-content').style.display = 'block';
+                        });
+                        dropdown.addEventListener('mouseleave', function() {
+                            this.querySelector('.dropdown-content').style.display = 'none';
+                        });
+                    });
+                    
+                    console.log('Dynamic header loaded successfully');
+                } else {
+                    throw new Error('Failed to load header');
+                }
+            } catch (error) {
+                console.error('Dynamic header loading failed:', error);
+                // Fallback to static header if dynamic loading fails
+                document.getElementById('header').innerHTML = `
+                    <div class="header-content">
+                        <div class="header-left">
+                            <a href="index.html" class="shop-link">AVENUE METRO</a>
+                        </div>
+                        <div class="header-center">
+                            <div class="dropdown">
+                                <a href="avenuemetro_shop.html" class="shop-link" data-floor="1st">1ST FL The Drop</a>
+                                <div class="dropdown-content">
+                                    <a href="avenuemetro_shop.html">Shop</a>
+                                    <a href="media_store.html">Music</a>
+                                    <a href="listening_room.html">Audio Books</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <a href="avenuemetro_game_room.html" class="shop-link" data-floor="2nd">2ND FL Play Zone</a>
+                                <div class="dropdown-content">
+                                    <a href="avenuemetro_arcade_games.html">Arcade</a>
+                                    <a href="avenuemetro_karaoke.html">Karaoke</a>
+                                    <a href="avenuemetro_card_games.html">Card Games</a>
+                                    <a href="avenuemetro_board_games.html">Board Games</a>
+                                    <a href="avenuemetro_pool.html">Pool</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <a href="avenuemetro_lounge.html" class="shop-link" data-floor="3rd">3RD FL Lounge</a>
+                                <div class="dropdown-content">
+                                    <a href="Main_lounge_entrance.html">Main Lounge</a>
+                                    <a href="avenuemetro_chatroom.html">Private Chat</a>
+                                    <a href="avenuemetro_stage.html">Stage</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <a href="avenuemetro_movie_lobby.html" class="shop-link" data-floor="4th">4TH FL Movie Theater</a>
+                                <div class="dropdown-content">
+                                    <a href="avenuemetro_theater.html">Theater</a>
+                                    <a href="comedy.html">Comedy</a>
+                                    <a href="drama.html">Drama</a>
+                                    <a href="indie.html">Indie</a>
+                                    <a href="anime.html">Anime</a>
+                                    <a href="scifi.html">Scifi</a>
+                                </div>
+                            </div>
+                            <div class="search-box">
+                                <form action="search_results.html" method="GET">
+                                    <input type="text" name="q" placeholder="Search..." class="search-input">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header-right">
+                            <img src="images/Login_icon.jpg" alt="Login Icon" class="login-icon">
+                            <div class="dropdown">
+                                <span>Login</span>
+                                <div class="dropdown-content">
+                                    <a href="#">Login</a>
+                                    <a href="#">Join</a>
+                                    <a href="#">My Account</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                
+                console.log('Fallback header loaded');
+            }
+            
+            // Add footer loading here (in the same event listener)
+            try {
+                const footerResponse = await fetch('components/footer.html');
+                if (footerResponse.ok) {
+                    const footerContent = await footerResponse.text();
+                    document.getElementById('footer').innerHTML = footerContent;
+                    console.log('Dynamic footer loaded successfully');
+                } else {
+                    throw new Error('Failed to load footer');
+                }
+            } catch (error) {
+                console.error('Dynamic footer loading failed:', error);
+                // Fallback footer
+                document.getElementById('footer').innerHTML = `
+                    <div class="footer-left">
+                        <ul>
+                            <li>Info</li>
+                            <li>Search</li>
+                            <li>Contact</li>
+                            <li>About</li>
+                            <li>Privacy Policies</li>
+                            <li>Refund Policy</li>
+                            <li>Shipping Policy</li>
+                            <li>Terms of Service</li>
+                        </ul>
+                    </div>
+                    <div class="footer-right">
+                        <p>
+                            Our mission<br>
+                            Avenue Metro! The internet's goto place for Urban Contemporary Streetwear, and Entertainment. We offer Graphic Tees, Sweatshirts, Joggers, Hoodies, Handbags, and Sunglasses just to name a few. Once completed, Avenue Metro will be "Four Floors of Fun" consisting of Shopping, Gaming, Movies, and a unique online social experience unlike any other. The Metropolis is the future! Welcome to The Ave.
+                        </p>
+                    </div>`;
+                console.log('Fallback footer loaded');
+            }
+        });
+        </script>
+
+        <div id="background-container" style="position: relative;">
+      <img src="images/Avenue_Exterior_Test.png"
+                 alt="Avenue Metro Building"
+                 usemap="#background-imgMap"
+                 id="background-img"
+                 srcset="images/Avenue_Exterior_Test_small.png 720w,
+                         images/Avenue_Exterior_Test_medium.png 1280w,
+                         images/Avenue_Exterior_Test.png 1920w"
+                 sizes="(max-width: 720px) 720px,
+                        (max-width: 1280px) 1280px,
+                        1920px">
+      <map name="background-imgMap">
+        <area shape="rect" coords="233,31,1284,162" href="avenuemetro_movie_lobby.html">
+        <area shape="rect" coords="224,248,1268,390" href="avenuemetro_lounge.html">
+        <area shape="rect" coords="231,411,1266,498" href="avenuemetro_game_room.html">
+        <area shape="rect" coords="247,561,1266,725" href="avenuemetro_shop.html">
+      </map>
+      </div>
+
+        <!-- Footer will be loaded dynamically -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Scripts at the end for better performance -->
+    <script src="scripts.js"></script>
+</body>
+</html>
