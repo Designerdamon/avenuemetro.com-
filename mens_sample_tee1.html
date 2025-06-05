@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+    <title>Avenue Metro Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+<!-- BEGIN PRODUCT DETAIL SNIPPET -->
+<div class="product-detail-container">
+  <!-- Left side: images -->
+  <div class="product-images">
+    <!-- Main product image -->
+    <img
+      src="images/Mens/mens_sample_tee.png"
+      alt="Mens Sample Tee"
+      class="primary-image"
+    />
+    <!-- If you have additional images/thumbnails, you can add them here -->
+    <!-- <img src="images/Mens/mens_sample_tee_alt1.png" alt="Alternate View" class="thumbnail-image" /> -->
+    <!-- <img src="images/Mens/mens_sample_tee_alt2.png" alt="Back View" class="thumbnail-image" /> -->
+  </div>
+
+  <!-- Right side: product details -->
+  <div class="product-meta">
+    <!-- Product Title -->
+    <h1 class="product-title">Mens Sample Tee</h1>
+    
+    <!-- Product Price -->
+    <p class="product-price">$29.99 USD</p>
+
+    <!-- Sizes (optional) -->
+    <div class="product-options">
+      <label for="size">Size</label>
+      <select id="size" name="size">
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">XL</option>
+      </select>
+    </div>
+
+    <!-- Quantity (optional) -->
+    <div class="quantity-container">
+      <label for="quantity">Quantity</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        value="1"
+        min="1"
+      />
+    </div>
+    
+    <!-- Add to Cart -->
+    <button class="add-to-cart">Add to Cart</button>
+
+    <!-- Product description -->
+    <div class="product-description">
+      <h2>Description</h2>
+      <p>
+        This is a sample tee description. You can write a few lines
+        about the design, materials, fit, or anything else
+        relevant to the product.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- END PRODUCT DETAIL SNIPPET -->
+
+        <!-- Footer will be loaded dynamically -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Scripts at the end for better performance -->
+    <script src="scripts.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+                // Set active class for 1st floor since this is a mens sample tee page (part of shop)
+                const shopLink = document.querySelector('[data-floor="1st"]');
+                if (shopLink) {
+                    shopLink.classList.add('active');
+                    console.log('1ST FL The Drop link set to active (red) for mens sample tee');
+                }
+            });
+            GlobalComponents.loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

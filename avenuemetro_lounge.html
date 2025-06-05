@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+    <title>Avenue Metro Lounge</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+ <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+        <!-- Lounge background and Chatbot -->
+        <div id="background-container" style="position: relative;">
+            <img src="images/avenuemetro_lounge.png"
+                 alt="Avenue Metro Lounge" usemap="#background-imgMap"
+                 id="background-img"
+                 srcset="images/avenuemetro_lounge_small.png 720w,
+                         images/avenuemetro_lounge_medium.png 1280w,
+                         images/avenuemetro_lounge.png 1920w"
+                 sizes="(max-width: 720px) 720px,
+                        (max-width: 1280px) 1280px,
+                        1920px">
+            <map name="background-imgMap">
+              <area shape="rect" coords="68,610,523,747" href="avenuemetro_chatroom.html">
+              <area shape="rect" coords="65,433,530,608" href="Main_lounge_entrance.html">
+            </map>
+
+            <!-- Alina Chatbot -->
+            <div id="chatbot-container">
+                <img src="images/Alina_Chatbot.png" alt="Chatbot Alina" id="chatbot-avatar">
+                <div id="chat-output">
+                    <p>Hi! Welcome to the Avenue Metro Lounge. My name is Alina. How may I help you?</p>
+                </div>
+                <input type="text" id="user-input" placeholder="Type your message here...">
+            </div>
+        </div>
+
+        <footer id="footer"></footer>
+    </div>
+    <script>
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+                // Set active class for 3rd floor lounge since this is the main lounge page
+                const loungeLink = document.querySelector('[data-floor="3rd"]');
+                if (loungeLink) {
+                    loungeLink.classList.add('active');
+                }
+            });
+            GlobalComponents.loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

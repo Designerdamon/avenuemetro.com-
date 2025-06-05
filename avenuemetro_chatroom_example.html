@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+
+    <title>Your Private Chat</title>
+
+    <!-- Main site CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Updated Media Player CSS (same approach as listening_room) -->
+    <link rel="stylesheet" href="Media_Player/styles.css">
+    
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+        <!-- Shop specific content -->
+        <div id="background-container" style="position: relative;">
+            <img src="images/chatroom_example.png"
+                 srcset="images/chatroom_example.png 720w,
+                         images/chatroom_example.png 1280w,
+                         images/chatroom_example.png 1920w"
+                 sizes="(max-width: 720px) 720px,
+                        (max-width: 1280px) 1280px,
+                        1920px"
+                 alt="Avenue Shop"
+                 id="background-img">
+        </div>
+
+        <!-- MATCHED Player alignment with listening_room -->
+        <div class="media-player-wrapper">
+          <div id="music-player">
+              <div id="album-art">
+                  <!-- Path from your ZIP: Doechii songs -->
+                  <img id="song-image" src="Media_Player/music_images/snoh_aalegra.png" alt="Album Art">
+              </div>
+              
+              <div id="controls">
+                  <button id="refresh-btn">🔄</button>
+                  <button id="prev-btn">⏮</button>
+                  <button id="play-pause-btn">▶</button>
+                  <button id="next-btn">⏭</button>
+                  <button id="shuffle-btn">🔀</button>
+              </div>
+              
+              <div id="info-section">
+                  <span id="current-time">00:00</span> / <span id="total-time">00:00</span>
+                  <input type="range" id="volume-slider" min="0" max="1" step="0.1">
+                  <select id="playlist">
+                      <option value="Media_Player/music/Snoh Aalegra -  DO 4 LOVE_Chopped.mp3">Snoh Aalegra -  DO 4 LOVE_Chopped</option>
+                  </select>
+              </div>
+              <audio id="audio-player"></audio>
+          </div>
+        </div>
+        <!-- END MUSIC PLAYER -->
+
+   
+        <!-- Footer will be loaded dynamically -->
+        <footer id="footer"></footer>
+    </div>
+
+    <script>
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+                // Set active class for 3rd floor lounge since this is a private chatroom page
+                const loungeLink = document.querySelector('[data-floor="3rd"]');
+                if (loungeLink) {
+                    loungeLink.classList.add('active');
+                    console.log('3RD FL Lounge link set to active (red) for chatroom example');
+                }
+            });
+            GlobalComponents.loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+    
+    <!-- Media player script controlling Doechii songs -->
+    <script src="Media_Player/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+    <title>Accessories</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+<!-- BEGIN COLLECTION SECTION SNIPPET -->
+<div id="collection-section">
+  <!-- You can keep or remove this heading -->
+  <h2> Accessories</h2>
+
+  <!-- Grid container for products -->
+  <div id="product-grid"></div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <!-- Page 1 is underlined or styled to show it's current -->
+    <a class="page-number current-page" href="mens/collection/sample-page.html=1">1</a>
+    <a class="page-number" href="mens/collection/sample-page.html=2">2</a>
+    <a class="page-number" href="mens/collection/sample-page.html=3">3</a>
+    <a class="page-number" href="mens/collection/sample-page.html=4">4</a>
+    <a class="page-number" href="mens/collection/sample-page.html=5">5</a>
+  </div>
+</div>
+<script>
+  // 1) Define the product data in an array
+  const products = [
+    {
+      name: "Mens Sample Tee #1",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee1.html",
+    },
+    {
+      name: "Mens Sample Tee #2",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee2.html",
+    },
+    {
+      name: "Mens Sample Tee #3",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee3.html",
+    },
+    {
+      name: "Mens Sample Tee #4",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee4.html",
+    },
+    {
+      name: "Mens Sample Tee #5",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee5.html",
+    },
+	    {
+      name: "Mens Sample Tee #1",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee1.html",
+    },
+    {
+      name: "Mens Sample Tee #2",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee2.html",
+    },
+    {
+      name: "Mens Sample Tee #3",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee3.html",
+    },
+    {
+      name: "Mens Sample Tee #4",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee4.html",
+    },
+    {
+      name: "Mens Sample Tee #5",
+      price: "$29.99 USD",
+      imageSrc: "images/Mens/mens_sample_tee.png",
+      link: "mens_sample_tee5.html",
+    },
+  ];
+
+  // 2) Select the grid container
+  const productGrid = document.getElementById('product-grid');
+
+  // 3) Loop through your product list and create elements
+  products.forEach((product) => {
+    // Outer container for each product
+    const productItem = document.createElement('div');
+    productItem.className = 'product-item';
+
+    // Anchor link
+    const link = document.createElement('a');
+    link.href = product.link;
+
+    // Product image
+    const img = document.createElement('img');
+    img.src = product.imageSrc;
+    img.alt = product.name; // Good for SEO
+    link.appendChild(img);
+
+    // Append the link (with the image) to the product container
+    productItem.appendChild(link);
+
+    // Product name
+    const nameEl = document.createElement('p');
+    nameEl.textContent = product.name;
+    productItem.appendChild(nameEl);
+
+    // Product price
+    const priceEl = document.createElement('p');
+    priceEl.textContent = product.price;
+    productItem.appendChild(priceEl);
+
+    // Finally, append the finished product to the grid
+    productGrid.appendChild(productItem);
+  });
+</script>
+
+<!-- END COLLECTION SECTION SNIPPET -->
+
+        <!-- Footer will be loaded dynamically -->
+        <footer id="footer"></footer>
+    </div>
+
+    <script>
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+                // Set active class for 1st floor since this is a shopping page
+                const shopLink = document.querySelector('[data-floor="1st"]');
+                if (shopLink) {
+                    shopLink.classList.add('active');
+                }
+            });
+            GlobalComponents.loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

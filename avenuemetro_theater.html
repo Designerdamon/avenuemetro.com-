@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+  <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+  <meta name="author" content="Avenue Metro">
+  <title>Avenue Metro Theater</title>
+
+  <!-- Existing site CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Add your custom video CSS (for the overlay, etc.) -->
+  <link rel="stylesheet" href="Video_Player/video_player.css">
+  
+  <!-- Existing site scripts -->
+  <script src="scripts.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header will be loaded dynamically -->
+    <div id="header"></div>
+
+    <!-- Theater specific content -->
+    <div id="background-container" style="position: relative;">
+      <img
+        src="images/avenuemetro_screen.png"
+        srcset="images/avenuemetro_screen_small.png 720w,
+                images/avenuemetro_screen_medium.png 1280w,
+                images/avenuemetro_screen.png 1920w"
+        sizes="(max-width: 720px) 720px,
+               (max-width: 1280px) 1280px,
+               1920px"
+        alt="Avenue Metro Theater"
+        id="background-img"
+      >
+      
+      <!-- VIDEO OVERLAY CONTAINER -->
+      <div id="video-overlay">
+        <video
+          id="customVideo"
+          class="custom-video"
+          controls        <!-- browser's default controls -->
+          preload="auto"
+        >
+          <source src="Video_Player/ONE%20OF%20THEM%20DAYS/ONE%20OF%20THEM%20DAYS%20-%20Official%20Trailer.mp4"
+                  type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+
+    <!-- Footer will be loaded dynamically -->
+    <footer id="footer"></footer>
+
+  </div> <!-- .container -->
+
+  <script>
+    // Load header and footer components
+    document.addEventListener('DOMContentLoaded', function() {
+        GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+            // Set active class for 4th floor since this is a theater page
+            const theaterLink = document.querySelector('[data-floor="4th"]');
+            if (theaterLink) {
+                theaterLink.classList.add('active');
+                console.log('4TH FL Movie Theater link set to active (red) for theater');
+            }
+        });
+        GlobalComponents.loadComponent('footer', 'components/footer.html');
+    });
+  </script>
+
+  <!-- Link to your custom video JS at the end of the body -->
+  <script src="Video_Player/video_player.js"></script>
+</body>
+</html>

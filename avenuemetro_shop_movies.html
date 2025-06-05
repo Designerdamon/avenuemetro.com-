@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenue Metro is the ultimate destination for Urban Contemporary Streetwear and Entertainment.">
+    <meta name="keywords" content="Urban Streetwear, Online Shopping, Entertainment, Games, Movies, Social Experience">
+    <meta name="author" content="Avenue Metro">
+    <title>Shop Movies</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+<!-- 8-Grid Module -->
+<div class="grid-container">
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 1">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 1">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 2">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 2">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 3">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 3">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 4">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 4">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 5">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 5">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 6">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 6">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 7">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 7">
+    </a>
+    <a href="index.html" class="grid-item">
+        <img src="images/placeholder_1.png" class="default-img" alt="Placeholder 8">
+        <img src="images/placeholder_hover.png" class="hover-img" alt="Hover Placeholder 8">
+    </a>
+</div>
+        
+        <!-- Footer will be loaded dynamically -->
+        <footer id="footer"></footer>
+    </div>
+
+    <script>
+        // Load header and footer components
+        document.addEventListener('DOMContentLoaded', function() {
+            GlobalComponents.loadComponent('header', 'components/header.html').then(() => {
+                // Set active class for 1st floor since this is a shop movies page
+                const shopLink = document.querySelector('[data-floor="1st"]');
+                if (shopLink) {
+                    shopLink.classList.add('active');
+                    console.log('1ST FL The Drop link set to active (red) for shop movies');
+                }
+            });
+            GlobalComponents.loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>
