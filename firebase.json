@@ -5,15 +5,8 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**",
-      "Video_Player/**",
       "src/**",
       "Fonts/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
