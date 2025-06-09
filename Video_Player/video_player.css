@@ -1,0 +1,35 @@
+/* Make sure the background image is responsive */
+#background-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container that holds the video on top of the background */
+#video-overlay {
+  position: absolute;
+  /* Adjust these values so the video lines up with the white box
+     For example, if the white box is centered, you might set something like: */
+  top: 17%;     /* Tweak this */
+  left: 30%;    /* Tweak this */
+  width: 40%;   /* Tweak this */
+  height: auto; /* Let the height auto-adjust based on the video's aspect ratio */
+
+  /* If you want the overlay to scale nicely, you can also use transform, etc.
+     For a simpler approach, just use % or vw for dimensions. */
+}
+
+/* The video itself: let it be responsive to the width of the overlay container */
+#video-overlay .custom-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Optional: maintain aspect ratio or handle any max/min sizes here */
+}
+
+/* Example: If you want to ensure the video never exceeds the background image */
+#background-container {
+  max-width: 1920px; /* or some suitable limit */
+  margin: 0 auto;
+  /* This helps keep everything contained */
+}
