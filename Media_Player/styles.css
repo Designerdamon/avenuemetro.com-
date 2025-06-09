@@ -1,0 +1,97 @@
+/* Keep the body minimal so it doesn't override main site's styling */
+body {
+  margin: 0;
+  padding: 0;
+  /* background-color: #222; Optional if you want a player BG */
+}
+
+/* This wrapper aligns the player, as done in listening_room */
+.media-player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;         /* Let it fill container space */
+  max-width: 1920px;   /* If you only want up to 1920px wide */
+  margin: 0 auto;
+}
+
+/* Music player container */
+#music-player {
+  width: 100%;
+  min-height: 50px;
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Album art */
+#album-art img {
+  width: 90px;
+  height: 90px;
+  border-radius: 5px;
+}
+
+/* Control buttons container */
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+  /* Remove margin-left, margin-top if misaligning */
+  /* margin-top: 5px; */
+  /* margin-left: 0; */
+}
+
+/* Control buttons themselves */
+#controls button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Info & volume/playlist section */
+#info-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ffffff;
+}
+
+/* Volume slider width */
+#volume-slider {
+  width: 100px;
+}
+
+/* Playlist styling */
+#playlist {
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+}
+#video-overlay {
+  position: absolute;
+
+  /* Change these values to move the player around and resize it */
+
+  /* Moves the overlay down from the top of its container.
+     For example, set `top: 20%;` or `top: 100px;` to shift it. */
+  top: 75%;     
+
+  /* Moves the overlay from the left edge.
+     For example, `left: 10%;` or `left: 200px;`. */
+  left: 25%;    
+
+  /* Controls how wide the player is. 
+     For example, reduce to `width: 40%;` or use px like `width: 800px;`. */
+  width: 50%;   
+
+  /* Let the height auto-adjust (to preserve aspect ratio)
+     or set a specific value if needed. */
+  height: auto;
+}
