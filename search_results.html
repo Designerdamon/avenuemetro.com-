@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search results for Avenue Metro">
+    <meta name="keywords" content="Search, Avenue Metro, Urban Streetwear, Entertainment, Games, Movies">
+    <meta name="author" content="Avenue Metro">
+    <title>Search Results - Avenue Metro</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .search-results-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 1.0);
+            border-radius: 8px;
+        }
+        
+        .search-info {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .search-result {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #fff;
+        }
+        
+        .search-result h3 {
+            color: white;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .search-result h3 a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .search-result h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .search-result p {
+            color: white;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+        
+        .search-result .category {
+            color: #ccc;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 18px;
+        }
+        
+        .search-again {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .search-again input {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .search-again button {
+            padding: 10px 20px;
+            background-color: #b50224;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .search-again button:hover {
+            background-color: #900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be loaded dynamically -->
+        <div id="header"></div>
+
+        <div class="search-results-container">
+            <div class="search-info" id="search-info">
+                <!-- Search info will be populated by JavaScript -->
+            </div>
+            
+            <div id="search-results">
+                <!-- Search results will be populated by JavaScript -->
+            </div>
+            
+            <div class="search-again">
+                <input type="text" id="new-search" placeholder="Try another search...">
+                <button onclick="performNewSearch()">Search</button>
+            </div>
+        </div>
+
+        <!-- Footer will be loaded dynamically -->
+        <div id="footer"></div>
+    </div>
+
+    <script>
+        // Page data for searching
+        const pageData = [
+            {
+                title: "Avenue Metro - Home",
+                url: "index.html",
+                description: "The ultimate destination for Urban Contemporary Streetwear and Entertainment. Four floors of shopping, gaming, movies, and social experiences.",
+                category: "Home",
+                keywords: ["home", "main", "streetwear", "entertainment", "urban", "shopping", "games", "movies", "social"]
+            },
+            {
+                title: "1ST FL The Drop - Shopping",
+                url: "avenuemetro_shop.html",
+                description: "Browse our collection of Urban Contemporary Streetwear including graphic tees, hoodies, and accessories.",
+                category: "Shopping - 1st Floor",
+                keywords: ["shopping", "clothes", "streetwear", "fashion", "tees", "hoodies", "accessories", "urban", "drop"]
+            },
+            {
+                title: "Music Store",
+                url: "media_store.html",
+                description: "Discover the latest music releases, albums, and digital downloads.",
+                category: "Shopping - 1st Floor",
+                keywords: ["music", "albums", "songs", "downloads", "audio", "store", "media"]
+            },
+            {
+                title: "Listening Room - Audio Books",
+                url: "listening_room.html",
+                description: "Explore our collection of audio books and spoken word content.",
+                category: "Shopping - 1st Floor",
+                keywords: ["audiobooks", "books", "listening", "audio", "spoken word", "literature"]
+            },
+            {
+                title: "Men's Collection",
+                url: "avenuemetro_Mens_Collection.html",
+                description: "Explore our complete men's streetwear collection including tees, hoodies, and accessories.",
+                category: "Shopping - Men's",
+                keywords: ["mens", "men", "male", "clothing", "streetwear", "collection", "fashion"]
+            },
+            {
+                title: "Women's Collection",
+                url: "avenuemetro_womens_Collection.html",
+                description: "Discover our women's streetwear line featuring trendy designs and comfortable fits.",
+                category: "Shopping - Women's",
+                keywords: ["womens", "women", "female", "clothing", "streetwear", "collection", "fashion"]
+            },
+            {
+                title: "Accessories",
+                url: "avenuemetro_accessories.html",
+                description: "Complete your look with our selection of handbags, sunglasses, and street accessories.",
+                category: "Shopping - Accessories",
+                keywords: ["accessories", "bags", "sunglasses", "handbags", "street", "fashion"]
+            },
+            {
+                title: "2ND FL Play Zone - Game Room",
+                url: "avenuemetro_game_room.html",
+                description: "Enter our gaming paradise with arcade games, board games, and interactive entertainment.",
+                category: "Gaming - 2nd Floor",
+                keywords: ["games", "gaming", "play", "arcade", "entertainment", "fun", "zone"]
+            },
+            {
+                title: "Arcade Games",
+                url: "avenuemetro_arcade_games.html",
+                description: "Classic and modern arcade games for endless entertainment.",
+                category: "Gaming - Arcade",
+                keywords: ["arcade", "games", "classic", "retro", "entertainment", "coins", "high score"]
+            },
+            {
+                title: "Board Games",
+                url: "avenuemetro_board_games.html",
+                description: "Strategic board games for competitive and casual play.",
+                category: "Gaming - Board Games",
+                keywords: ["board games", "strategy", "multiplayer", "tabletop", "competitive", "casual"]
+            },
+            {
+                title: "Karaoke",
+                url: "avenuemetro_karaoke.html",
+                description: "Sing your heart out in our state-of-the-art karaoke rooms.",
+                category: "Gaming - Karaoke",
+                keywords: ["karaoke", "singing", "music", "performance", "entertainment", "microphone"]
+            },
+            {
+                title: "Chess",
+                url: "avenuemetro_chess.html",
+                description: "Challenge others to strategic chess matches in our chess corner.",
+                category: "Gaming - Board Games",
+                keywords: ["chess", "strategy", "board game", "thinking", "competitive", "tournament"]
+            },
+            {
+                title: "Checkers",
+                url: "avenuemetro_checkers.html",
+                description: "Classic checkers games for strategic entertainment.",
+                category: "Gaming - Board Games",
+                keywords: ["checkers", "strategy", "board game", "classic", "competitive"]
+            },
+            {
+                title: "Connect Four",
+                url: "avenuemetro_connect_four.html",
+                description: "Connect four in a row in this classic strategy game.",
+                category: "Gaming - Board Games",
+                keywords: ["connect four", "strategy", "board game", "classic", "four in a row"]
+            },
+            {
+                title: "Dominos",
+                url: "avenuemetro_dominos.html",
+                description: "Traditional dominos games with various rule sets.",
+                category: "Gaming - Board Games",
+                keywords: ["dominos", "tiles", "matching", "traditional", "board game"]
+            },
+            {
+                title: "Monopoly Games",
+                url: "avenuemetro_monopoly_games.html",
+                description: "Various versions of the classic Monopoly board game.",
+                category: "Gaming - Board Games",
+                keywords: ["monopoly", "board game", "real estate", "classic", "property", "money"]
+            },
+            {
+                title: "3RD FL Lounge",
+                url: "avenuemetro_lounge.html",
+                description: "Relax and socialize in our comfortable third-floor lounge area.",
+                category: "Social - 3rd Floor",
+                keywords: ["lounge", "social", "relax", "hangout", "comfortable", "socialize"]
+            },
+            {
+                title: "Main Lounge",
+                url: "Main_Lounge.html",
+                description: "The main gathering space for socializing and relaxation.",
+                category: "Social - Lounge",
+                keywords: ["main lounge", "gathering", "social", "relaxation", "community"]
+            },
+            {
+                title: "Private Chat Room",
+                url: "avenuemetro_chatroom.html",
+                description: "Private chat rooms for intimate conversations and group discussions.",
+                category: "Social - Chat",
+                keywords: ["chat", "private", "conversation", "messaging", "communication", "social"]
+            },
+            {
+                title: "Stage",
+                url: "avenuemetro_stage.html",
+                description: "Performance stage for live entertainment and presentations.",
+                category: "Social - Entertainment",
+                keywords: ["stage", "performance", "live", "entertainment", "presentations", "shows"]
+            },
+            {
+                title: "4TH FL Movie Theater",
+                url: "avenuemetro_movie_lobby.html",
+                description: "Premium movie theater experience with the latest films and classic favorites.",
+                category: "Movies - 4th Floor",
+                keywords: ["movies", "theater", "cinema", "films", "entertainment", "screening"]
+            },
+            {
+                title: "Theater",
+                url: "avenuemetro_theater.html",
+                description: "Main theater for movie screenings and special events.",
+                category: "Movies - Theater",
+                keywords: ["theater", "movies", "cinema", "screening", "films", "entertainment"]
+            },
+            {
+                title: "Movie Store",
+                url: "avenuemetro_movie_store.html",
+                description: "Purchase or rent movies from our extensive digital and physical collection.",
+                category: "Movies - Store",
+                keywords: ["movie store", "films", "purchase", "rent", "collection", "digital", "physical"]
+            }
+        ];
+
+        // Get search query from URL parameters
+        function getSearchQuery() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('q') || '';
+        }
+
+        // Perform search
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                return [];
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            const results = [];
+
+            pageData.forEach(page => {
+                let score = 0;
+                
+                // Check title (highest weight)
+                if (page.title.toLowerCase().includes(searchTerm)) {
+                    score += 10;
+                }
+                
+                // Check description (medium weight)
+                if (page.description.toLowerCase().includes(searchTerm)) {
+                    score += 5;
+                }
+                
+                // Check category (medium weight)
+                if (page.category.toLowerCase().includes(searchTerm)) {
+                    score += 5;
+                }
+                
+                // Check keywords (lower weight)
+                page.keywords.forEach(keyword => {
+                    if (keyword.toLowerCase().includes(searchTerm)) {
+                        score += 2;
+                    }
+                });
+                
+                if (score > 0) {
+                    results.push({ ...page, score });
+                }
+            });
+
+            // Sort by score (highest first)
+            return results.sort((a, b) => b.score - a.score);
+        }
+
+        // Display search results
+        function displayResults(query, results) {
+            const searchInfo = document.getElementById('search-info');
+            const searchResults = document.getElementById('search-results');
+            
+            if (query) {
+                searchInfo.innerHTML = `Showing results for: "<strong>${query}</strong>" (${results.length} result${results.length !== 1 ? 's' : ''} found)`;
+            } else {
+                searchInfo.innerHTML = 'Please enter a search term.';
+            }
+
+            if (results.length === 0 && query) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <p>No results found for "${query}"</p>
+                        <p>Try searching for:</p>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>Shopping, clothes, streetwear, fashion</li>
+                            <li>Games, arcade, board games, karaoke</li>
+                            <li>Movies, theater, cinema, films</li>
+                            <li>Lounge, social, chat, stage</li>
+                            <li>Music, audiobooks, media</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (results.length > 0) {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-result">
+                        <h3><a href="${result.url}">${result.title}</a></h3>
+                        <p>${result.description}</p>
+                        <div class="category">${result.category}</div>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = '';
+            }
+        }
+
+        // Perform new search
+        function performNewSearch() {
+            const newQuery = document.getElementById('new-search').value;
+            if (newQuery.trim()) {
+                window.location.href = `search_results.html?q=${encodeURIComponent(newQuery)}`;
+            }
+        }
+
+        // Handle Enter key in search input
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('new-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performNewSearch();
+                }
+            });
+
+            // Perform initial search
+            const query = getSearchQuery();
+            const results = performSearch(query);
+            displayResults(query, results);
+            
+            // Set the search input value
+            document.getElementById('new-search').value = query;
+        });
+    </script>
+
+    <!-- Load dynamic components -->
+    <script src="scripts.js"></script>
+</body>
+</html>
